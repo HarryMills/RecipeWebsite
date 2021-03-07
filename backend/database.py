@@ -3,7 +3,7 @@ from .mongoManager import MongoManager
 
 class Database:
     def __init__(self):
-        self.manager = MongoManager("Harry", "harry123")
+        self.manager = MongoManager("Harry", "harry123", 'RecipeSite', 'recipe')
 
     def create_recipe(self, data):
         val = self.manager.collection.insert_one(data)
@@ -22,3 +22,10 @@ class Database:
     def delete_recipe(self, query):
         val = self.manager.collection.delete_one(query)
         return val.deleted_count
+
+    def retrieve_all(self):
+        return self.manager.collection.find()
+
+    def delete_all(self):
+        val = self.manager.collection.delete_many({})
+        print(val.deleted_count, " documents deleted.")

@@ -3,7 +3,9 @@ from pymongo import MongoClient
 
 class MongoManager:
     def __init__(self, username, password, database, collection):
-        mongo_client_string = 'mongodb+srv://' + username + ':' + password + '@cluster0.qswd8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+        mongo_client_string = 'mongodb+srv://' + username + ':' + password + '@cluster0.qswd8.mongodb.net' \
+                                                                             '/myFirstDatabase?retryWrites=true&w' \
+                                                                             '=majority'
         self.client = MongoClient(mongo_client_string)
         dblist = self.client.list_database_names()
         if database in dblist:
