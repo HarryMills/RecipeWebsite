@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Harry and Emma\'s Recipe Website'
+    return 'Harry and Emma\'s Recipe Project'
 
 
 @app.route('/recipes/<recipe_id>', methods=["GET", "POST"])
@@ -16,5 +16,4 @@ def recipes(recipe_id):
     if request.method == "POST":
         """modify/update the information for <recipe_id>"""
 
-if __name__ == "__main__":
-    app.run()
+app.run()
