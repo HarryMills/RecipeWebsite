@@ -2,8 +2,10 @@ from .mongoManager import MongoManager
 
 
 class Database:
-    def __init__(self):
-        self.manager = MongoManager("Harry", "harry123", 'RecipeSite', 'recipe')
+    def __init__(self, database, collection):
+        # database = RecipeSite
+        # collection = recipe
+        self.manager = MongoManager("Harry", "harry123", database, collection)
 
     def create_recipe(self, data):
         val = self.manager.collection.insert_one(data)
