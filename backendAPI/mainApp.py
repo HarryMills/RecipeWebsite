@@ -6,6 +6,7 @@ app = Flask(__name__)
 database_name = 'RecipeSite'
 collection_name = 'recipes'
 
+
 @app.route('/')
 def index():
     return 'Harry and Emma\'s Recipe Project'
@@ -34,7 +35,7 @@ def view_all():
     return db.retrieve_all()
 
 
-@app.route('/recipes/<recipe_id>', methods=["POST"])
+@app.route('/recipes/<recipe_id>', methods=["DELETE"])
 def remove_recipe(recipe_id):
     """deleting a specific recipe. redirects to page with all recipes"""
     db = backend.Database(database_name, collection_name)
@@ -44,7 +45,7 @@ def remove_recipe(recipe_id):
     view_all()
 
 
-@app.route('/recipes/<recipe_id>', methods=["POST"])
+@app.route('/recipes/<recipe_id>', methods=["PUT"])
 def edit_recipe(recipe_id, data):
     """updating details for a specific recipe id, then gets edited recipe"""
     db = backend.Database(database_name, collection_name)
